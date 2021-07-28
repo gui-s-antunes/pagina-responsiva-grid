@@ -1,0 +1,480 @@
+@charset "utf-8";
+
+@keyframes balancar{
+    0%, 10%, 60%, 100%{
+        transform: rotate(0deg) translateY(0vh);
+        text-shadow: none;
+    }
+
+    20%, 30%{
+        transform: rotate(-45deg);
+    }
+
+    40%, 50%{
+        transform: rotate(45deg);
+    }
+
+    80%{
+        transform:translateY(-5vh);
+        text-shadow: 0 0 1em rgb(111, 71, 148);
+    }
+
+    /* animação dos ícones */
+}
+
+/* .menu-header{
+    width: 70%;
+    margin: 0 auto;
+} */
+
+/* Seria interessante fazer uma grid para a página inteira também */
+body{
+    font-family: "Oxygen";
+    background-color: #f6f6f6;
+    margin: 0;
+
+    /* fonte oxygen na página e fundo um cinza bem claro */
+}
+
+/* classes usadas em mais de um container */
+.button{
+    text-decoration: none;
+    background-color: rgb(111, 71, 148);
+    color: white;
+    padding: .7em;
+    border-radius: .7em;
+
+    display: inline-block;
+    /* display inline-block, pois o link é inline, o que não deixa usar margin */
+
+    /* tira o sublinhado do link, troca a cor de fundo do botão, troca a cor da letra, dá espaço para as letras
+    e arredonda o botão */
+}
+
+.button:hover{
+    background-color: rgb(83, 63, 102);
+
+    /* clareia o botão quando passa o cursor */
+}
+
+/* Header */
+.menu-header{
+    display: grid;
+
+    grid-template-rows: repeat(5, auto);
+    grid-template-columns: repeat(3, 1fr);
+    /* o container fica em modo grid, 5 linhas tamanho automatico, 3 colunas 1 fração para cada */
+}
+
+.menu-header-logo{
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    margin: 0 auto;
+    /* logo fica centralizado com o margin e ocupa toda a primeira linha da grid */
+}
+
+.menu-nav{
+    /* Ocupando linhas e colunas restantes */
+    grid-row: 2 / -1;
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    /* ocupa toda a linha 2 da grid, e cria uma flexbox que faz cada item ter sua linha */
+    /* flex-direction modo coluna para fazer cada item em uma linha diferente */
+}
+
+.menu-nav-item{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background: rgb(115, 12, 212);
+
+    /* alinhar item, fundo roxo e padding/margin zerados */
+}
+
+.menu-nav-item a{
+    text-decoration: none;
+    color: white;
+    padding: 1em;
+    display: block;
+
+    transition: background-color .4s;
+
+    /* tirar decoração do link, padding para dar espaço entre as linhas, 
+    display block para que o link ocupe toda a linha, cor branca nas letras
+    transition na propriedade background-color para animar no hover */
+}
+
+.menu-nav-item a:hover{
+    background-color: rgb(141, 70, 207);
+
+    /* clareia o fundo quando passar o cursor sobre o link */
+}
+
+/* ----- */
+
+/* Seção top content */
+
+.top-content{
+    text-align: center;
+    margin-bottom: 1em;
+    padding: 1.5em 10px;
+    padding-top: 1em;
+
+    display: flex;
+
+    flex-direction: column;
+
+    /* Alinhar todo o container, margin 0 e paddin 0 em cima e embaixo, 10px cada lado */
+}
+
+.icon-play{
+    display: none;
+    height: 5em;
+    /* Deixa o ícone escondido no mobile */
+}
+
+.icon img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.top-content-title{
+    margin: 1.2em 0;
+    font-size: 1.375em;
+    color: indigo;
+
+    
+
+    /* margem padrão do h1, fonte maior, cor indigo */
+
+}
+
+.top-content-subtitle{
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 2em;
+
+    color: rgb(136, 77, 192);
+
+    /* fonte tamanho normal, altura da linha 1.5, margin abaixo maior para afastar o botão e cor nova */
+}
+
+.top-content .button{
+    align-self: center;
+
+    /* Tive que fazer isto, porque o botão havia se esticado
+    lembrrando que o tonainer está com o flex-direction no column, então, as axis se inverteram (justify e align-items ou align-self mudam) */
+}
+
+/* Obs: o botão está no topo do css, pois é usado em outras partes do documento html */
+/* Obs2: seria interessante colocar na grid abaixo, assim cada parte da página pode ser modelada */
+
+/*  ------- */
+
+/* CORPO DA PÁGINA */
+
+.corpo-content{
+    display: grid;
+
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-areas: 
+    "designer-guff      designer-guff   designer-guff   designer-guff"
+    "detalied-stats     detalied-stats  detalied-stats  detalied-stats"
+    "Dashboard          Dashboard       Dashboard       Dashboard"
+    "Development        Development     Development     Development";
+
+    grid-gap: 3em;
+
+    margin: 5em 0;
+
+    padding: 0 2em;
+
+    /* display grid, template do grid 4 linhas de tamanho de acordo com o item, 4 colunas dividas igualmente de acordo
+    com o espaço, usei o areas para mapear cada área (célula) disponível */
+}
+
+.corpo-content div{
+    text-align: center;
+
+    /* centralizar o conteúdo de cada div (item)*/
+}
+
+.corpo-subcontent:nth-child(1){
+    grid-area: designer-guff;
+
+    /* definir que o primeiro item (div) receba áreas designer-guff */
+}
+
+.corpo-subcontent:nth-child(2){
+    grid-area: detalied-stats;
+}
+
+.corpo-subcontent:nth-child(3){
+    grid-area: Dashboard;
+}
+
+.corpo-subcontent:nth-child(4){
+    grid-area: Development;
+}
+
+.corpo-subcontent span{
+    font-size: 3em;
+    color: rgb(111, 71, 148);
+
+    /* tamanho da fonte 3 vezes o do pai (16px vezes 3), e cor do ícone */
+}
+
+.corpo-subcontent:hover span i{
+    animation: balancar 2s infinite;
+}
+
+.corpo-subcontent h1{
+    font-size: 1.375em;
+    color: rgb(111, 71, 148);
+
+    /* tamanho da fonte do h1 */
+}
+
+.corpo-subcontent h2{
+    font-size: 1em;
+
+    /* tamanho da fonte do h2 */
+}
+
+/* ------ */
+
+/* TRanscrição */
+
+.transcricao-content{
+    display: grid;
+
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, auto);
+
+    grid-template-areas: 
+    "heading    heading"
+    "trends     trends"
+    "users      users"
+    "goals      goals";
+
+    grid-gap: 2em;
+
+    margin: 0;
+    padding: 2em 2em;
+
+    background-image: linear-gradient(to top, #f6f6f6, white);
+
+    /* grid para o container, template de 2 linhas auto (de acordo com a necessidade do item), template de 2 colunas 
+    template area para organizar onde cada item vai, grid-gap para colocar espaço entre os itens, 
+    justify content para centralizar, margin para o container encontar em todos os lados, paddin para afastar
+    os itens dos cantos, background-image para criar um efeito no fundo e difundir do container de cima*/
+}
+
+.transcricao-subcontent h3{
+    color: rgb(111, 71, 148);
+
+    /* mudar a cor do h3 de cada item */
+}
+
+.transcricao-subcontent:nth-child(1){
+    grid-area: heading;
+
+    /* cada item é mapeado */
+}
+
+.transcricao-subcontent:nth-child(2){
+    grid-area: trends;
+}
+
+.transcricao-subcontent:nth-child(3){
+    grid-area: users;
+}
+
+.transcricao-subcontent:nth-child(4){
+    grid-area: goals;
+}
+
+.transcricao-subcontent:nth-child(3) p, .transcricao-subcontent:nth-child(4) p{
+    margin-bottom: 2em;
+
+    /* os dois últimos itens do container têm botão no final, então, afastei o botão do parágrafo */
+}
+
+/* ----- */
+
+/* Footer */
+
+footer{
+    display: grid;
+
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(1, auto);
+
+    grid-template-areas: 
+    "rede-social"
+    "info";
+
+    /* colocando o footer como grid, template com 2 linhas e 1 coluna ambos automatics,
+    template areas para definir posição */
+}
+
+.footer-redes-sociais{
+    grid-area: rede-social;
+
+    display: flex;
+
+    background-color: rgb(82, 35, 126);
+
+    justify-content: center;
+
+    /* definir posição do container dos ícones das redes sociais, fazer um container com flex,
+    fundo roxo e centralizar itens com justify */
+}
+
+.footer-redes-sociais a{
+    color: white;
+    font-size: 2em;
+    margin: .3em .4em;
+
+    transition: all .1s;
+    transition-property: font-size;
+
+    /* cor branca dos ícones, gamanho da fonte, margem, transição de animação na fonte */
+}
+
+.footer-redes-sociais a:hover{
+    font-size: 2.5em;
+    /* aumenta fonte do ícone quando passa o cursor */
+}
+
+.footer-info{
+    grid-area: info;
+
+    text-align: center;
+    color: white;
+    background-color: rgb(98, 47, 146);
+
+    padding-left: 2em;
+    padding-right: 2em;
+
+    /* atribui posição na grid para a info, centraliza texto, coloca cor branca, fundo roxo,
+    paddin nos lados para não encostar */
+}
+
+
+
+
+@media screen and (min-width: 48.74em){
+    /* Header */
+    .menu-header-logo{
+        grid-row: 1 / 2;
+        grid-column: 1 / 3;
+
+        /* Não ocupará mais a última coluna do grid */
+    }
+
+    .menu-nav{
+        grid-row: 1 / 2;
+        grid-column: 3 / -1;
+        flex-direction: row;
+        /* Vira modo linha como padrão do flex, e coloca na primeira linha ocupando a última coluna */
+        
+        justify-content: flex-end;
+        align-items: flex-end;
+        /* coloca o flexbox no final do espaço vago nos dois eixos (justify horizontal e align vertical com o direction row) */
+    }
+
+    .menu-nav-item{
+        background-color: #f6f6f6;
+        /* coloca o fundo dos botões desta cor */
+    }
+
+    .menu-nav-item a{
+        /* display: inline-flex; */
+        color: purple;
+        padding: .7em;
+        /* padding menor e cor das letras em purple  */
+    }
+
+    .menu-nav-item a:hover{
+        color: white;
+        /* cor muda ao passar o cursor (o fundo fica purple, configuração anterior) */
+    }
+
+    /* top content */
+
+    .top-content{
+        background: rgb(115, 12, 212);
+    }
+
+    .top-content h1, .top-content h2{
+        color: white;
+    }
+
+    .corpo-content{
+        grid-template-rows: repeat(2, auto);
+
+        grid-template-areas:
+        "designer-guff      designer-guff   detalied-stats   detalied-stats"
+        "Dashboard          Dashboard       Development      Development";
+    }
+}
+
+@media screen and (min-width: 62.5em){
+    .top-content{
+        background: #521a66 url(../imagens/bg_topo_1198x670.jpg);
+        min-height: 400px;
+
+        justify-content: flex-end;
+    }
+
+    .icon-play{
+        display: block;
+    }
+
+    .top-content-title{
+        text-shadow: 1px 1px 4px black, 0 0 .7em black;
+    }
+
+    .top-content-subtitle{
+        text-shadow: 0 0 .6em black;
+    }
+}
+
+@media screen and (min-width: 75em){
+    .top-content{
+        background: #521a66 url(../imagens/bg_topo_1600x1374.jpg);
+        background-size: 100%;
+        min-height: 700px;
+    }
+
+    .corpo-content{
+        grid-template-rows: auto;
+
+        grid-template-areas: "designer-guff      detalied-stats   Dashboard   Development";
+    }
+
+    .transcricao-content{
+        grid-template-rows: repeat(2, auto);
+
+        grid-template-areas: 
+            "heading    trends"
+            "users     goals";
+    }
+
+    .transcricao-subcontent .button{
+        /* border: 2px solid red; */
+        float: right;
+    }
+
+    .menu-nav-item a:hover{
+        background-color: #E9D4FD;
+        color: #521a66;
+    }
+}
