@@ -29,7 +29,7 @@
 
 /* Seria interessante fazer uma grid para a página inteira também */
 body{
-    font-family: "Oxygen";
+    font-family: "Oxygen", Arial, Helvetica, sans-serif;
     background-color: #f6f6f6;
     margin: 0;
 
